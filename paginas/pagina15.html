@@ -12,8 +12,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      background: #f0f8f6;
+      min-height: 100vh;
+      background-color: #f0f0f0;
     }
 
     .form-container {
@@ -23,8 +23,6 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       width: 100%;
       max-width: 600px;
-      max-height: 100vh;
-      overflow-y: auto;
     }
 
     h2 {
@@ -51,15 +49,6 @@
       box-sizing: border-box;
     }
 
-    input[type="checkbox"] {
-      margin-right: 5px;
-    }
-
-    .checkbox-group {
-      margin-bottom: 15px;
-      padding-left: 10px;
-    }
-
     .checkbox-group label {
       display: block;
       margin-bottom: 6px;
@@ -68,9 +57,10 @@
     .row {
       display: flex;
       gap: 10px;
+      flex-wrap: wrap;
     }
 
-    .row input {
+    .row div {
       flex: 1;
     }
 
@@ -89,7 +79,6 @@
       width: 100%;
       font-size: 16px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
     }
 
     button:hover {
@@ -104,21 +93,22 @@
       background-color: #616161;
     }
 
-    .mensaje-exito {
-      display: none;
-      margin-bottom: 20px;
-      padding: 15px;
-      background-color: #c8e6c9;
-      color: #256029;
-      border-radius: 10px;
+    #mensaje {
       text-align: center;
+      margin-top: 15px;
+      font-weight: bold;
+      color: green;
+    }
+
+    @media (max-width: 600px) {
+      .row {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
 <body>
   <div class="form-container">
-    <div id="mensaje" class="mensaje-exito">¡Gracias por tus comentarios!</div>
-
     <form id="miFormulario">
       <h2>Déjanos tu opinión</h2>
 
@@ -144,15 +134,9 @@
 
       <label>Temas que más te gustaron:</label>
       <div class="checkbox-group">
-        <label><input type="checkbox" name="tema[]" value="Historia de la ciencia y la tecnología"> 1. Historia de la ciencia y la tecnología</label>
-        <label><input type="checkbox" name="tema[]" value="Principios básicos de la ciencia y la tecnología"> 2. Principios básicos de la ciencia y la tecnología</label>
-        <label><input type="checkbox" name="tema[]" value="Aplicaciones de la ciencia y la tecnología"> 3. Aplicaciones de la ciencia y la tecnología</label>
-        <label><input type="checkbox" name="tema[]" value="Impacto de la ciencia y la tecnología"> 4. Impacto de la ciencia y la tecnología</label>
-        <label><input type="checkbox" name="tema[]" value="Innovación científica"> 5. Innovación científica</label>
-        <label><input type="checkbox" name="tema[]" value="Retos actuales de la ciencia y la tecnología"> 6. Retos actuales de la ciencia y la tecnología</label>
-        <label><input type="checkbox" name="tema[]" value="Ética de la ciencia y la tecnología"> 7. Ética de la ciencia y la tecnología</label>
-        <label><input type="checkbox" name="tema[]" value="Educación de la ciencia y la tecnología"> 8. Educación de la ciencia y la tecnología</label>
-        <label><input type="checkbox" name="tema[]" value="Futuro de la ciencia y la tecnología"> 9. Futuro de la ciencia y la tecnología</label>
+        <label><input type="checkbox" name="tema[]" value="Historia de la ciencia y la tecnología"> Historia de la ciencia y la tecnología</label>
+        <label><input type="checkbox" name="tema[]" value="Innovación científica"> Innovación científica</label>
+        <label><input type="checkbox" name="tema[]" value="Aplicaciones"> Aplicaciones</label>
       </div>
 
       <label for="comentario">Comentarios:</label>
@@ -167,35 +151,41 @@
         <option value="Mala">Mala</option>
       </select>
 
-      <!-- Botones -->
       <div class="button-group">
         <button type="submit">Enviar</button>
         <button type="reset" class="reset-btn">Borrar</button>
       </div>
     </form>
+    <div id="mensaje"></div>
   </div>
 
   <script>
-    document.getElementById('miFormulario').addEventListener('submit', function (e) {
+    const formulario = document.getElementById('miFormulario');
+    const mensaje = document.getElementById('mensaje');
+
+    formulario.addEventListener('submit', function(e) {
       e.preventDefault();
 
-      const form = e.target;
-      const data = new FormData(form);
+      const datos = new FormData(formulario);
 
-      fetch('https://formsubmit.co/ajax/marquezramonhiginio@gmail.com', {
-        method: 'POST',
-        body: data
+      fetch("https://formsubmit.co/ajax/marquezramonhiginio@gmail.com", {
+        method: "POST",
+        body: datos
       })
       .then(response => {
         if (response.ok) {
-          document.getElementById('mensaje').style.display = 'block';
-          form.reset();
+          mensaje.textContent = "¡Gracias por tus comentarios!";
+          mensaje.style.color = "green";
+          formulario.reset();
         } else {
-          alert('Hubo un error al enviar el formulario.');
+          return response.json().then(err => {
+            throw new Error(err.message || "Error al enviar.");
+          });
         }
       })
       .catch(error => {
-        alert('Ocurrió un problema: ' + error.message);
+        mensaje.textContent = "Ocurrió un error al enviar: " + error.message;
+        mensaje.style.color = "red";
       });
     });
   </script>
