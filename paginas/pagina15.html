@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formulario de Comentarios</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f0f8f6;
+    }
+
+    .form-container {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 600px;
+      max-height: 100vh;
+      overflow-y: auto;
+    }
+
+    h2 {
+      text-align: center;
+      color: #00796b;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-sizing: border-box;
+    }
+
+    input[type="checkbox"] {
+      margin-right: 5px;
+    }
+
+    .checkbox-group {
+      margin-bottom: 15px;
+      padding-left: 10px;
+    }
+
+    .checkbox-group label {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .row input {
+      flex: 1;
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    button {
+      background-color: #00796b;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 10px;
+      width: 100%;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #004d40;
+    }
+
+    .reset-btn {
+      background-color: #9e9e9e;
+    }
+
+    .reset-btn:hover {
+      background-color: #616161;
+    }
+
+    .mensaje-exito {
+      display: none;
+      margin-bottom: 20px;
+      padding: 15px;
+      background-color: #c8e6c9;
+      color: #256029;
+      border-radius: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <div id="mensaje" class="mensaje-exito">¡Gracias por tus comentarios!</div>
+
+    <form id="miFormulario">
+      <h2>Déjanos tu opinión</h2>
+
+      <div class="row">
+        <div>
+          <label for="nombre">Nombre:</label>
+          <input type="text" name="nombre" required>
+        </div>
+        <div>
+          <label for="apellido">Apellido:</label>
+          <input type="text" name="apellido" required>
+        </div>
+      </div>
+
+      <label for="ciudad">Ciudad:</label>
+      <input type="text" name="ciudad" required>
+
+      <label for="pais">País:</label>
+      <input type="text" name="pais" required>
+
+      <label for="email">Correo electrónico:</label>
+      <input type="email" name="email" required>
+
+      <label>Temas que más te gustaron:</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="tema[]" value="Historia de la ciencia y la tecnología"> 1. Historia de la ciencia y la tecnología</label>
+        <label><input type="checkbox" name="tema[]" value="Principios básicos de la ciencia y la tecnología"> 2. Principios básicos de la ciencia y la tecnología</label>
+        <label><input type="checkbox" name="tema[]" value="Aplicaciones de la ciencia y la tecnología"> 3. Aplicaciones de la ciencia y la tecnología</label>
+        <label><input type="checkbox" name="tema[]" value="Impacto de la ciencia y la tecnología"> 4. Impacto de la ciencia y la tecnología</label>
+        <label><input type="checkbox" name="tema[]" value="Innovación científica"> 5. Innovación científica</label>
+        <label><input type="checkbox" name="tema[]" value="Retos actuales de la ciencia y la tecnología"> 6. Retos actuales de la ciencia y la tecnología</label>
+        <label><input type="checkbox" name="tema[]" value="Ética de la ciencia y la tecnología"> 7. Ética de la ciencia y la tecnología</label>
+        <label><input type="checkbox" name="tema[]" value="Educación de la ciencia y la tecnología"> 8. Educación de la ciencia y la tecnología</label>
+        <label><input type="checkbox" name="tema[]" value="Futuro de la ciencia y la tecnología"> 9. Futuro de la ciencia y la tecnología</label>
+      </div>
+
+      <label for="comentario">Comentarios:</label>
+      <textarea name="comentario" rows="4" required></textarea>
+
+      <label>Calificación del sitio:</label>
+      <select name="calificacion" required>
+        <option value="">Selecciona una opción</option>
+        <option value="Excelente">Excelente</option>
+        <option value="Buena">Buena</option>
+        <option value="Regular">Regular</option>
+        <option value="Mala">Mala</option>
+      </select>
+
+      <!-- Botones -->
+      <div class="button-group">
+        <button type="submit">Enviar</button>
+        <button type="reset" class="reset-btn">Borrar</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('miFormulario').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const form = e.target;
+      const data = new FormData(form);
+
+      fetch('https://formsubmit.co/ajax/marquezramonhiginio@gmail.com', {
+        method: 'POST',
+        body: data
+      })
+      .then(response => {
+        if (response.ok) {
+          document.getElementById('mensaje').style.display = 'block';
+          form.reset();
+        } else {
+          alert('Hubo un error al enviar el formulario.');
+        }
+      })
+      .catch(error => {
+        alert('Ocurrió un problema: ' + error.message);
+      });
+    });
+  </script>
+</body>
+</html>

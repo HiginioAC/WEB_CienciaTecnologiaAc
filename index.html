@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ciencia y Tecnología</title>
+  <link rel="stylesheet" href="estilos.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0077cc;
+      color: #333;
+    }
+
+    .encabezado {
+      background-color: #0077cc;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.8rem;
+    }
+
+    .contenedor {
+      display: flex;
+      flex-direction: row;
+      min-height: calc(100vh - 80px);
+    }
+
+    .menu-lateral {
+      background-color: #1778eeb5;
+      border-right: 1px solid #ccc;
+      width: 220px;
+      padding: 1rem;
+    }
+
+    .menu-lateral ul {
+      list-style: none;
+    }
+
+    .menu-lateral a {
+      display: block;
+      padding: 0.8rem;
+      margin-bottom: 0.5rem;
+      text-decoration: none;
+      color: #ffffff;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .menu-lateral a:hover {
+      background-color: #0a448bb5;
+    }
+
+    .contenido-principal {
+      flex: 1;
+      padding: 1rem;
+    }
+
+    iframe {
+      width: 100%;
+      height: 150vh;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.755);
+      background-color: rgb(174, 208, 241);
+    }
+
+    /* Adaptabilidad para celular */
+    @media screen and (max-width: 768px) {
+      .contenedor {
+        flex-direction: column;
+      }
+
+      .menu-lateral {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #ccc;
+      }
+
+      iframe {
+        height: 70vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="encabezado">
+    <h1>Ciencia y Tecnología</h1>
+  </header>
+
+  <div class="contenedor">
+    <nav class="menu-lateral">
+      <ul>
+        <li><a href="paginas/inicio.html" target="contenido">Inicio</a></li>
+        <li><a href="paginas/pagina1.html" target="contenido">Introduccion a la ciencia y la Tecnología</a></li>
+        <li><a href="paginas/pagina2.html" target="contenido">Historia de la ciencia y la tecnologia</a></li>
+        <li><a href="paginas/pagina3.html" target="contenido">Principios basicos de la ciencia y la tegnologia</a></li>
+        <li><a href="paginas/pagina4.html" target="contenido">Aplicaciones de la ciencia y la tecnologia</a></li>
+        <li><a href="paginas/pagina5.html" target="contenido">Impacto de la ciencia y la tecnologia</a></li>
+        <li><a href="paginas/pagina6.html" target="contenido">Innovacion cientifica</a></li>
+        <li><a href="paginas/pagina7.html" target="contenido">Retos actuales de la ciencia y la tecnologia</a></li>
+        <li><a href="paginas/pagina8.html" target="contenido">Etica de la ciencia y la tecnologia</a></li>
+        <li><a href="paginas/pagina9.html" target="contenido">Educacion de la ciencia y la tecnologia</a></li>
+        <li><a href="paginas/pagina10.html" target="contenido">Futuro de la ciencia y la tecnologia</a></li>
+        <li><a href="paginas/pagina11.html" target="contenido">Comparacion de la ciencia y la tecnologia</a></li>
+        <li><a href="paginas/pagina12.html" target="contenido">Exploracion espacial </a></li>
+        <li><a href="paginas/pagina13.html" target="contenido">Robotica</a></li>
+        <li><a href="paginas/pagina14.html" target="contenido">Energias renovables</a></li>
+        <li><a href="paginas/pagina15.html" target="contenido"> Comentarios</a></li>
+      </ul>
+    </nav>
+
+    <main class="contenido-principal">
+      <iframe name="contenido" src="paginas/inicio.html"></iframe>
+    </main>
+
+    
+
+
+  </div>
+</body>
+</html>
+
