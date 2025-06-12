@@ -2,27 +2,143 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Formulario Prueba</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formulario de Comentarios</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      padding: 30px;
+    }
+
+    .form-container {
+      background-color: #fff;
+      max-width: 600px;
+      margin: auto;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #00796b;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+
+    .checkbox-group {
+      margin-top: 10px;
+    }
+
+    .checkbox-group label {
+      display: block;
+      margin-top: 8px;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background-color: #00796b;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #004d40;
+    }
+
+    .gracias {
+      display: none;
+      text-align: center;
+      color: green;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-  <h1>Formulario de contacto</h1>
+  <div class="form-container">
+    <form id="miFormulario" action="https://formspree.io/f/xvgraawn" method="POST">
+      <h2>Déjanos tu opinión</h2>
 
-  <form action="https://formsubmit.co/locasssss214@gmail.com" method="POST">
-    <label>Nombre:</label>
-    <input type="text" name="nombre" required><br><br>
+      <label>Nombre:</label>
+      <input type="text" name="nombre" required>
 
-    <label>Email:</label>
-    <input type="email" name="email" required><br><br>
+      <label>Email:</label>
+      <input type="email" name="email" required>
 
-    <label>Comentario:</label><br>
-    <textarea name="mensaje" rows="4" required></textarea><br><br>
+      <label>Ciudad:</label>
+      <input type="text" name="ciudad" required>
 
-    <!-- Opcionales -->
-    <input type="hidden" name="_subject" value="Nuevo mensaje desde tu página">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_template" value="table">
+      <label>Temas que más te gustaron:</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="tema[]" value="Historia de la ciencia y la tecnología"> Historia de la ciencia y la tecnología</label>
+        <label><input type="checkbox" name="tema[]" value="Principios básicos de la ciencia y la tecnología"> Principios básicos</label>
+        <label><input type="checkbox" name="tema[]" value="Aplicaciones de la ciencia y la tecnología"> Aplicaciones</label>
+        <label><input type="checkbox" name="tema[]" value="Impacto de la ciencia y la tecnología"> Impacto</label>
+        <label><input type="checkbox" name="tema[]" value="Innovación científica"> Innovación</label>
+        <label><input type="checkbox" name="tema[]" value="Retos actuales de la ciencia y la tecnología"> Retos actuales</label>
+        <label><input type="checkbox" name="tema[]" value="Ética de la ciencia y la tecnología"> Ética</label>
+        <label><input type="checkbox" name="tema[]" value="Educación de la ciencia y la tecnología"> Educación</label>
+        <label><input type="checkbox" name="tema[]" value="Futuro de la ciencia y la tecnología"> Futuro</label>
+      </div>
 
-    <button type="submit">Enviar</button>
-  </form>
+      <label>Comentarios:</label>
+      <textarea name="comentario" rows="4" required></textarea>
+
+      <label>Calificación del sitio:</label>
+      <select name="calificacion" required>
+        <option value="">Selecciona una opción</option>
+        <option value="Excelente">Excelente</option>
+        <option value="Buena">Buena</option>
+        <option value="Regular">Regular</option>
+        <option value="Mala">Mala</option>
+      </select>
+
+      <button type="submit">Enviar</button>
+      <div class="gracias" id="graciasMensaje">¡Gracias por tus comentarios!</div>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('miFormulario').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const form = e.target;
+      fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (response.ok) {
+          form.reset();
+          document.getElementById('graciasMensaje').style.display = 'block';
+        } else {
+          alert("Error al enviar. Verifica tu conexión o intenta más tarde.");
+        }
+      }).catch(() => {
+        alert("No se pudo conectar con el servidor.");
+      });
+    });
+  </script>
 </body>
 </html>
