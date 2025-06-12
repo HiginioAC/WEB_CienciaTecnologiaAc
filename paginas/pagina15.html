@@ -2,132 +2,27 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Formulario de Comentarios</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f0f0f0;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-    }
-
-    .form-container {
-      background-color: #ffffff;
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      width: 100%;
-      max-width: 600px;
-    }
-
-    h2 {
-      text-align: center;
-      color: #00796b;
-      margin-bottom: 20px;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 5px;
-      color: #333;
-    }
-
-    input[type="text"],
-    input[type="email"],
-    textarea,
-    select {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-    }
-
-    .checkbox-group {
-      margin-bottom: 15px;
-    }
-
-    .checkbox-group label {
-      display: block;
-      margin-bottom: 6px;
-      color: #333;
-    }
-
-    button {
-      background-color: #00796b;
-      color: white;
-      border: none;
-      padding: 12px;
-      border-radius: 10px;
-      width: 100%;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #004d40;
-    }
-  </style>
+  <title>Formulario Prueba</title>
 </head>
 <body>
-  <div class="form-container">
-    <form action="https://formsubmit.co/marquezramonhiginio@gmail.com" method="POST">
-      <h2>Déjanos tu opinión</h2>
+  <h1>Formulario de contacto</h1>
 
-      <label for="nombre">Nombre:</label>
-      <input type="text" name="nombre" required>
+  <form action="https://formsubmit.co/marquezramonhiginio@gmail.com" method="POST">
+    <label>Nombre:</label>
+    <input type="text" name="nombre" required><br><br>
 
-      <label for="apellido">Apellido:</label>
-      <input type="text" name="apellido" required>
+    <label>Email:</label>
+    <input type="email" name="email" required><br><br>
 
-      <label for="ciudad">Ciudad:</label>
-      <input type="text" name="ciudad" required>
+    <label>Comentario:</label><br>
+    <textarea name="mensaje" rows="4" required></textarea><br><br>
 
-      <label for="pais">País:</label>
-      <input type="text" name="pais" required>
+    <!-- Opcionales -->
+    <input type="hidden" name="_subject" value="Nuevo mensaje desde tu página">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
 
-      <label for="email">Correo electrónico:</label>
-      <input type="email" name="email" required>
-
-      <label>Temas que más te gustaron:</label>
-      <div class="checkbox-group">
-        <label><input type="checkbox" name="tema[]" value="Historia de la ciencia y la tecnología"> Historia de la ciencia y la tecnología</label>
-        <label><input type="checkbox" name="tema[]" value="Principios básicos de la ciencia y la tecnología"> Principios básicos de la ciencia y la tecnología</label>
-        <label><input type="checkbox" name="tema[]" value="Aplicaciones de la ciencia y la tecnología"> Aplicaciones de la ciencia y la tecnología</label>
-        <label><input type="checkbox" name="tema[]" value="Impacto de la ciencia y la tecnología"> Impacto de la ciencia y la tecnología</label>
-        <label><input type="checkbox" name="tema[]" value="Innovación científica"> Innovación científica</label>
-        <label><input type="checkbox" name="tema[]" value="Retos actuales de la ciencia y la tecnología"> Retos actuales de la ciencia y la tecnología</label>
-        <label><input type="checkbox" name="tema[]" value="Ética de la ciencia y la tecnología"> Ética de la ciencia y la tecnología</label>
-        <label><input type="checkbox" name="tema[]" value="Educación de la ciencia y la tecnología"> Educación de la ciencia y la tecnología</label>
-        <label><input type="checkbox" name="tema[]" value="Futuro de la ciencia y la tecnología"> Futuro de la ciencia y la tecnología</label>
-      </div>
-
-      <label for="comentario">Comentarios:</label>
-      <textarea name="comentario" rows="4" required></textarea>
-
-      <label>Calificación del sitio:</label>
-      <select name="calificacion" required>
-        <option value="">Selecciona una opción</option>
-        <option value="Excelente">Excelente</option>
-        <option value="Buena">Buena</option>
-        <option value="Regular">Regular</option>
-        <option value="Mala">Mala</option>
-      </select>
-
-      <!-- Opciones ocultas -->
-      <input type="hidden" name="_next" value="https://higinioac.github.io/WEB_CienciaTecnologiaAc/pagina16.html">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_subject" value="Nueva reseña desde tu sitio web">
-
-      <!-- Botón -->
-      <button type="submit">Enviar</button>
-    </form>
-  </div>
+    <button type="submit">Enviar</button>
+  </form>
 </body>
 </html>
