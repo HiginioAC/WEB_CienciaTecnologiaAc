@@ -7,13 +7,13 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      /*background: linear-gradient(to bottom right, #e0f7fa, #ffffff);*/
-      margin: 20px;
+      background: #f0f0f0;
+      margin: 0;
       padding: 0;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
     }
 
     .form-container {
@@ -23,8 +23,6 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       width: 100%;
       max-width: 600px;
-      max-height: 100vh;
-      overflow-y: auto;
     }
 
     h2 {
@@ -48,37 +46,16 @@
       margin-bottom: 15px;
       border: 1px solid #ccc;
       border-radius: 10px;
-      box-sizing: border-box;
-    }
-
-    input[type="checkbox"] {
-      margin-right: 5px;
     }
 
     .checkbox-group {
       margin-bottom: 15px;
-      padding-left: 10px;
     }
 
     .checkbox-group label {
       display: block;
       margin-bottom: 6px;
       color: #333;
-    }
-
-    .row {
-      display: flex;
-      gap: 10px;
-    }
-
-    .row input {
-      flex: 1;
-    }
-
-    .button-group {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
     }
 
     button {
@@ -96,53 +73,39 @@
     button:hover {
       background-color: #004d40;
     }
-
-    .reset-btn {
-      background-color: #9e9e9e;
-    }
-
-    .reset-btn:hover {
-      background-color: #616161;
-    }
   </style>
 </head>
 <body>
   <div class="form-container">
     <form action="https://formsubmit.co/marquezramonhiginio@gmail.com" method="POST">
-      <input type="hidden" name="captcha" value="false">
       <h2>Déjanos tu opinión</h2>
 
-      <div class="row">
-        <div>
-          <label for="nombre">Nombre:</label>
-          <input type="text" name="nombre" id="nombre" required>
-        </div>
-        <div>
-          <label for="apellido">Apellido:</label>
-          <input type="text" name="apellido" id="apellido" required>
-        </div>
-      </div>
+      <label for="nombre">Nombre:</label>
+      <input type="text" name="nombre" required>
+
+      <label for="apellido">Apellido:</label>
+      <input type="text" name="apellido" required>
 
       <label for="ciudad">Ciudad:</label>
-      <input type="text" name="ciudad" id="ciudad" required>
+      <input type="text" name="ciudad" required>
 
       <label for="pais">País:</label>
-      <input type="text" name="pais" id="pais" required>
+      <input type="text" name="pais" required>
 
       <label for="email">Correo electrónico:</label>
-      <input type="email" name="email" id="email" required>
+      <input type="email" name="email" required>
 
       <label>Temas que más te gustaron:</label>
       <div class="checkbox-group">
-        <label><input type="checkbox" name="tema[]" value="Historia de la ciencia y la tecnología"> 1. Historia de la ciencia y la tecnología</label>
-        <label><input type="checkbox" name="tema[]" value="Principios básicos de la ciencia y la tecnología"> 2. Principios básicos de la ciencia y la tecnología</label>
-        <label><input type="checkbox" name="tema[]" value="Aplicaciones de la ciencia y la tecnología"> 3. Aplicaciones de la ciencia y la tecnología</label>
-        <label><input type="checkbox" name="tema[]" value="Impacto de la ciencia y la tecnología"> 4. Impacto de la ciencia y la tecnología</label>
-        <label><input type="checkbox" name="tema[]" value="Innovación científica"> 5. Innovación científica</label>
-        <label><input type="checkbox" name="tema[]" value="Retos actuales de la ciencia y la tecnología"> 6. Retos actuales de la ciencia y la tecnología</label>
-        <label><input type="checkbox" name="tema[]" value="Ética de la ciencia y la tecnología"> 7. Ética de la ciencia y la tecnología</label>
-        <label><input type="checkbox" name="tema[]" value="Educación de la ciencia y la tecnología"> 8. Educación de la ciencia y la tecnología</label>
-        <label><input type="checkbox" name="tema[]" value="Futuro de la ciencia y la tecnología"> 9. Futuro de la ciencia y la tecnología</label>
+        <label><input type="checkbox" name="tema[]" value="Historia de la ciencia y la tecnología"> Historia de la ciencia y la tecnología</label>
+        <label><input type="checkbox" name="tema[]" value="Principios básicos de la ciencia y la tecnología"> Principios básicos de la ciencia y la tecnología</label>
+        <label><input type="checkbox" name="tema[]" value="Aplicaciones de la ciencia y la tecnología"> Aplicaciones de la ciencia y la tecnología</label>
+        <label><input type="checkbox" name="tema[]" value="Impacto de la ciencia y la tecnología"> Impacto de la ciencia y la tecnología</label>
+        <label><input type="checkbox" name="tema[]" value="Innovación científica"> Innovación científica</label>
+        <label><input type="checkbox" name="tema[]" value="Retos actuales de la ciencia y la tecnología"> Retos actuales de la ciencia y la tecnología</label>
+        <label><input type="checkbox" name="tema[]" value="Ética de la ciencia y la tecnología"> Ética de la ciencia y la tecnología</label>
+        <label><input type="checkbox" name="tema[]" value="Educación de la ciencia y la tecnología"> Educación de la ciencia y la tecnología</label>
+        <label><input type="checkbox" name="tema[]" value="Futuro de la ciencia y la tecnología"> Futuro de la ciencia y la tecnología</label>
       </div>
 
       <label for="comentario">Comentarios:</label>
@@ -158,15 +121,12 @@
       </select>
 
       <!-- Opciones ocultas -->
-      <input type="hidden" name="_subject" value="Nuevo comentario desde tu sitio web">
+      <input type="hidden" name="_next" value="https://higinioac.github.io/WEB_CienciaTecnologiaAc/pagina16.html">
       <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_template" value="box">
+      <input type="hidden" name="_subject" value="Nueva reseña desde tu sitio web">
 
-      <!-- Botones -->
-      <div class="button-group">
-        <button type="submit">Enviar</button>
-        <button type="reset" class="reset-btn">Borrar</button>
-      </div>
+      <!-- Botón -->
+      <button type="submit">Enviar</button>
     </form>
   </div>
 </body>
